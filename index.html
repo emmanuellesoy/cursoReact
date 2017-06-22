@@ -6,16 +6,19 @@
    </head>
    <body>
       <main id="app"></main>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
-      <script type="text/javascript">
+      <script type="text/babel">
          function Hola(props){
             var name = props.name;
 
-            return React.DOM.h1(
-               {
-                  id: 'Title',
-               }, 'Hola ' + name);
+            return (
+               <h1 id="title">
+               Hola {name}
+               </h1>
+            );
+
          }
 
          var hola = React.createElement(Hola, {
@@ -23,7 +26,7 @@
          });
 
          ReactDOM.render(
-            hola, document.getElementById('app')
+            <Hola name="shannonbit"/>, document.getElementById('app')
          );
 
 
