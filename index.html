@@ -34,15 +34,37 @@
 
       }
 
-      handleClick(){
+      /******************************* MONTADO *******************************/
+      componentWillMount(){
+         console.info("El componente se va a montar");
+      }
 
-         this.setState({
-            count: this.state.count + 1
-         });
+      componentDidMount(){
+         document.addEventListener('click', this.handleClick);
+      }
+
+      /**************************** ACTUALIZACION ****************************/
+
+      // componentWillReceiveProps(nextProps){
+      //    //Ej. Si name cambia haz algo
+      // }
+
+      shouldComponentUpdate(nextProps, nextState){
+
+         if(nextState.count !== this.state.count) {
+            return true;
+         }
+
+         return false;
 
       }
 
+      componentWillUpdate(){
+         console.info("El componente se va a actualizar");
+      }
+
       render(){
+
          return (
             <Hola
             name={this.props.name}
@@ -50,6 +72,24 @@
             onClick={this.handleClick}
             />
          );
+
+      }
+
+      componentDidUpdate(){
+         console.info("El componente se actualizo");
+      }
+
+      /***************************** DESMONTADO ******************************/
+
+      componentWillUnmount(){
+         document.removeEventListener('click', this.handleClick);
+      }
+
+      handleClick(){
+
+         this.setState({
+            count: this.state.count + 1
+         });
 
       }
 
