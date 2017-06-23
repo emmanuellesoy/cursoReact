@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <title></title>
-   </head>
-   <body>
-      <main id="app"></main>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
-      <script type="text/babel">
-         class MiComponente extends React.Component {
+<head>
+   <meta charset="utf-8">
+   <title></title>
+</head>
+<body>
+   <main id="app"></main>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
+   <script type="text/babel">
+   function Hola(props){
+      var name = props.name;
 
-            constructor(props){
-               super(props);
+      return (
+         <h1 id="title" onClick={props.onClick}>
+         Hola {props.name} {props.count}
+         </h1>
+      );
 
-               this.state = {
-                  count : 0
-               };
+   }
 
-               this.handleClick = this.handleClick.bind(this);
+   class MiComponente extends React.Component {
 
-            }
+      constructor(props){
+         super(props);
 
-            handleClick(){
+         this.state = {
+            count : 0
+         };
 
-               this.setState({
-                  count: this.state.count + 1
-               });
+         this.handleClick = this.handleClick.bind(this);
 
-            }
+      }
 
-            render(){
-               const name = this.props.name;
+      handleClick(){
 
-               return (
-                  <h1 id="Title" onClick={this.handleClick}>
-                  Hola {name} {this.state.count}
-                  </h1>
-               );
+         this.setState({
+            count: this.state.count + 1
+         });
 
-            }
+      }
 
-         }
-
-         ReactDOM.render(
-            <MiComponente name="shannonbit" />, document.getElementById('app')
+      render(){
+         return (
+            <Hola
+            name={this.props.name}
+            count={this.state.count}
+            onClick={this.handleClick}
+            />
          );
-      </script>
-   </body>
+
+      }
+
+   }
+
+   ReactDOM.render(
+      <MiComponente name="shannonbit" />, document.getElementById('app')
+   );
+   </script>
+</body>
 </html>
