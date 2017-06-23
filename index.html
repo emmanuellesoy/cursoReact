@@ -14,7 +14,7 @@
       var name = props.name;
 
       return (
-         <h1 id="title" onClick={props.onClick}>
+         <h1 id="title" onClick={props.onClick} onMouseEnter={props.onMouseEnter}>
          Hola {props.name} {props.count}
          </h1>
       );
@@ -70,6 +70,7 @@
             name={this.props.name}
             count={this.state.count}
             onClick={this.handleClick}
+            onMouseEnter={this.handleMouseEnter}
             />
          );
 
@@ -91,6 +92,10 @@
             count: this.state.count + 1
          });
 
+      }
+
+      handleMouseEnter(event){
+         console.log(event.target);
       }
 
    }
