@@ -1,0 +1,36 @@
+import React from'react';
+import {
+  Route,
+  Switch,
+} from'react-router-dom';
+
+import Home from'./Home.jsx';
+import About from'./About.jsx';
+import Error404 from'./Error404.jsx'
+
+function Pages() {
+  return (
+    <main role="application">
+
+      <Switch>
+        {/* Home */}
+        <Route
+          path="/"
+          exact
+          component={Home}
+        />
+        {/* About */}
+        <Route
+          path="/about"
+          exact
+          component={About}
+        />
+        {/* Page 404 */}
+        <Route component={Error404} />
+      </Switch>
+    </main>
+ )
+
+}
+
+export default Pages;
