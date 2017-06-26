@@ -5,7 +5,8 @@ import {
 } from'react-router-dom';
 
 import Home from'./Home.jsx';
-import About from'./About.jsx';
+import Post from'./Post.jsx';
+import Profile from'./Profile.jsx';
 import Error404 from'./Error404.jsx'
 
 function Pages() {
@@ -13,19 +14,21 @@ function Pages() {
     <main role="application">
 
       <Switch>
-        {/* Home */}
         <Route
           path="/"
           exact
           component={Home}
         />
-        {/* About */}
         <Route
-          path="/about"
+          path="/post/:id"
           exact
-          component={About}
+          component={Post}
         />
-        {/* Page 404 */}
+        <Route
+          path="/user/:id"
+          exact
+          component={Profile}
+        />
         <Route component={Error404} />
       </Switch>
     </main>
