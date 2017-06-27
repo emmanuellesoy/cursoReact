@@ -28974,6 +28974,8 @@ class Home extends _react.Component {
          posts: [],
          loading: true
       };
+
+      this.handleScroll = this.handleScroll.bind(this);
    }
 
    componentDidMount() {
@@ -28987,7 +28989,47 @@ class Home extends _react.Component {
             page: _this.state.page + 1,
             loading: false
          });
+
+         window.addEventListener('scroll', _this.handleScroll);
       })();
+   }
+
+   componentWillUnmount() {
+      window.removeEventListener('scroll', this.handleScroll);
+   }
+
+   handleScroll(event) {
+      var _this2 = this;
+
+      if (this.state.loading) return null;
+
+      const scrolled = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const fullHeaight = document.body.clientHeight;
+
+      if (!(scrolled + viewportHeight + 300 >= fullHeaight)) {
+         return null;
+      }
+
+      this.setState({
+         loading: true }, _asyncToGenerator(function* () {
+
+         try {
+            const posts = yield _api2.default.posts.getList(_this2.state.page);
+
+            _this2.setState({
+               posts: _this2.state.posts.concat(posts),
+               page: _this2.state.page + 1,
+               loading: false
+            });
+         } catch (e) {
+            console.error(e);
+
+            _this2.setState({
+               loading: false
+            });
+         }
+      }));
    }
 
    render() {
