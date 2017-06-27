@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Post from '../../posts/containers/Post.jsx';
+import Loading from '../../shared/components/Loading.jsx';
 import api from '../../api.js';
 
 class Home extends Component {
@@ -30,14 +31,11 @@ class Home extends Component {
    render() {
       return (
          <section name="Home">
-         <h1>Home</h1>
-         <section>
-            { this.state.loading && ( <h2>Loading posts...</h2> ) }
-            { this.state.posts.map( post => <Post key={ post.id } {...post} /> ) }
-         </section>
-         <Link to="/about">
-         Go to about
-         </Link>
+            <h1>Home</h1>
+            <section>
+               { this.state.loading && ( <Loading /> ) }
+               { this.state.posts.map( post => <Post key={ post.id } {...post} /> ) }
+            </section>
          </section>
       );
    }

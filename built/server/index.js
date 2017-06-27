@@ -28946,6 +28946,10 @@ var _Post = __webpack_require__(101);
 
 var _Post2 = _interopRequireDefault(_Post);
 
+var _Loading = __webpack_require__(265);
+
+var _Loading2 = _interopRequireDefault(_Loading);
+
 var _api = __webpack_require__(61);
 
 var _api2 = _interopRequireDefault(_api);
@@ -28992,17 +28996,8 @@ class Home extends _react.Component {
          _react2.default.createElement(
             'section',
             null,
-            this.state.loading && _react2.default.createElement(
-               'h2',
-               null,
-               'Loading posts...'
-            ),
+            this.state.loading && _react2.default.createElement(_Loading2.default, null),
             this.state.posts.map(post => _react2.default.createElement(_Post2.default, _extends({ key: post.id }, post)))
-         ),
-         _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/about' },
-            'Go to about'
          )
       );
    }
@@ -37141,6 +37136,10 @@ var _Post = __webpack_require__(101);
 
 var _Post2 = _interopRequireDefault(_Post);
 
+var _Loading = __webpack_require__(265);
+
+var _Loading2 = _interopRequireDefault(_Loading);
+
 var _api = __webpack_require__(61);
 
 var _api2 = _interopRequireDefault(_api);
@@ -37175,6 +37174,9 @@ class Profile extends _react.Component {
    }
 
    render() {
+      if (this.state.loading) {
+         return _react2.default.createElement(_Loading2.default, null);
+      }
       return _react2.default.createElement(
          'section',
          { name: 'profile' },
@@ -37315,6 +37317,33 @@ function Layout(props) {
 }
 
 exports.default = Layout;
+
+/***/ }),
+/* 265 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Loading() {
+   return _react2.default.createElement(
+      'h3',
+      null,
+      'Loading data...'
+   );
+}
+
+exports.default = Loading;
 
 /***/ })
 /******/ ]);
