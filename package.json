@@ -25,8 +25,11 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-latest-minimal": "^1.1.2",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.2",
     "json-loader": "^0.5.4",
     "serve": "^6.0.0",
+    "style-loader": "^0.18.2",
     "webpack": "^3.0.0"
   }
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Post from '../../posts/containers/Post.jsx';
 import Loading from '../../shared/components/Loading.jsx';
 import api from '../../api.js';
+import styles from './Page.css';
 
 class Home extends Component {
 
@@ -68,16 +69,16 @@ class Home extends Component {
                });
 
             }
-            
+
          });
 
       }
 
       render() {
          return (
-            <section name="Home">
+            <section name="Home" className={styles.section}>
                <h1>Home</h1>
-               <section>
+               <section className={styles.list}>
                   { this.state.loading && ( <Loading /> ) }
                   { this.state.posts.map( post => <Post key={ post.id } {...post} /> ) }
                </section>
