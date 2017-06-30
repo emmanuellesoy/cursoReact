@@ -15,7 +15,7 @@ function Header(){
             </Link>
             <a
                className={styles.link}
-               href="http://shanonbit.xyz/"
+               href="http://shannonbit.xyz/"
                target="_blank"
                >
                shannonbit.xyz
